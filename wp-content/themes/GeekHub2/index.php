@@ -4,11 +4,7 @@
 			<h3>Наші курси</h3>
 			<ul>
 
-<?php
-	$args = array( 'posts_per_page' => 10, 'order'=> 'ASC', 'orderby' => 'title' );
-	$postslist = get_posts( $args );
-
-	 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 				<li id="post-<?php the_ID(); ?>">
 <?php the_post_thumbnail(); ?>
