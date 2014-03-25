@@ -52,10 +52,5 @@ $args = array(
     );
 add_theme_support( 'custom-header', $args );
 
-$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'link_color', array(
-	'label'        => __( 'Header Color', 'mytheme' ),
-	'section'    => 'your_section_id',
-	'settings'   => 'your_setting_id',
-) ) );
 
 ?>
