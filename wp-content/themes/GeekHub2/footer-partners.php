@@ -1,11 +1,26 @@
 <ul class="partner-box">
-<?php if(!dynamic_sidebar('footer-widgets')): ?>
+<?php if(!dynamic_sidebar('Footer widgets')): ?>
 	<li>
 		<img src="<?php bloginfo('template_url') ?>/img/fb.jpg" alt="facebook" />
 	</li>
 <?php endif; ?>
+	</ul>
+<!--<?php $sponsors = new WP_Query(array('post_type' => 'sponsors',
+									'order'=> 'ASC'
+									)); ?>
+<?php if ( $sponsors->have_posts() ) : while ( $sponsors->have_posts() ) : $sponsors->the_post(); ?>
+
+		<li id="post-<?php the_ID(); ?>">
+<?php the_post_thumbnail(); ?>
+
+		</li>
+<?php endwhile; ?>
+<?php else: ?>
+		<p>post area</p>
+<?php endif; ?>
+	</ul>
 </ul>
-	<!--<li><img src="<?php bloginfo('template_url') ?>/img/fb.jpg" alt="facebook" /></li>
+	<li><img src="<?php bloginfo('template_url') ?>/img/fb.jpg" alt="facebook" /></li>
 	<li class="sertificates"><a href="#" title="sertificates"><img src="<?php bloginfo('template_url') ?>/img/certificates.png" alt="sertificates" /></a></li>
 	<li class="sponsors">
 		<h5>Наші Спонсори</h5>
