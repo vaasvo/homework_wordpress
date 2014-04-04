@@ -1,36 +1,15 @@
 <?php
-/**
-* Downloadable style and script
-**/
+
 function load_style_script(){
-	wp_enqueue_script('jquery', get_template_directory_uri() . '/js/jquery-1.11.0.min.js');
-	wp_enqueue_script('myscript', get_template_directory_uri() . '/js/myscript.js');
 	wp_enqueue_style('style', get_template_directory_uri() . '/style.css');
 }
 
-/**
-* style and script
-**/
 add_action('wp_enqueue_scripts', 'load_style_script' );
 
-/**
-* post-thumbnails
-**/
 add_theme_support('post-thumbnails' );
 
-/**
-* menu
-**/
 register_nav_menu( 'navigation', 'nav');
 
-/**
-* social-menu
-**/
-register_nav_menu( 'socialmenu', 'social_nav');
-
-/**
-* footer-partners
-**/
 register_sidebar(array(
 	'name' => 'Footer widgets',
     'before_widget' => '<li>',
@@ -38,7 +17,6 @@ register_sidebar(array(
     'before_title' => '<h5>',
     'after_title' => '</h5>',
 	));
-
 
 add_action( 'init', 'create_posttype' );
 function create_posttype() {
@@ -54,10 +32,10 @@ function create_posttype() {
 			'public' => true,
 			'has_archive' => true,
 			'rewrite' => array('slug' => 'courses'),
-			'supports' => array('title', 'editor', 'thumbnail', 'revisions')
+			'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions')
 		)
 	);
-	register_post_type( 'our_team',
+	register_post_type( 'team',
 		array(
 			'labels' => array(
 							'name' => __( 'Team' ),
@@ -68,7 +46,7 @@ function create_posttype() {
 			'public' => true,
 			'has_archive' => true,
 			'rewrite' => array('slug' => 'team'),
-			'supports' => array('title', 'editor', 'thumbnail', 'revisions')
+			'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions')
 		)
 	);
 	register_post_type( 'sponsors',
@@ -89,29 +67,66 @@ function create_posttype() {
 
 function geekhub_customize_register( $wp_customize ) {
 	$wp_customize->add_section( 'Geekhub_test' , array(
-    'title'    => __( 'Head Theme', 'geekhub_test' ),
-    'priority' => 30,
+	    'title'    => __( 'Head Theme', 'geekhub_test' ),
+	    'priority' => 30,
 ) );
 	$wp_customize->add_setting( 'header_image' , array(
-    'transport'     => 'refresh',
+	    'transport'     => 'refresh',
 ) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'link_header_image', array(
-	'label'    => __( 'Upload a logo', 'geekhub' ),
-	'section'  => 'Geekhub_test',
-	'settings' => 'header_image',
+		'label'    => __( 'Upload a logo', 'geekhub' ),
+		'section'  => 'Geekhub_test',
+		'settings' => 'header_image',
 ) ) );
-
-	$wp_customize->add_setting( 'header_color' , array(
-    'default'   => '#ff0000',
-    'transport' => 'refresh',
+	$wp_customize->add_section( 'Social_link' , array(
+	    'title'    => __( 'Social link', 'geekhub_test' ),
+	    'priority' => 31,
 ) );
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'link_color', array(
-	'label'    => __( 'Header Color', 'geekhub' ),
-	'section'  => 'Geekhub_test',
-	'settings' => 'header_color',
+	$wp_customize->add_setting( 'facebook_link' , array(
+	    'default'   => '',
+	    'transport' => 'postMessage',
+) );
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'facebook_link_text', array(
+		'label'    => __( 'Facebook', 'geekhub' ),
+		'section'  => 'Social_link',
+		'settings' => 'facebook_link',
 ) ) );
-
-
+	$wp_customize->add_setting( 'vkontakte_link' , array(
+	    'default'   => '',
+	    'transport' => 'postMessage',
+) );
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'vkontakte_link_text', array(
+		'label'    => __( 'VKontakte', 'geekhub' ),
+		'section'  => 'Social_link',
+		'settings' => 'vkontakte_link',
+) ) );
+	$wp_customize->add_setting( 'twitter_link' , array(
+	    'default'   => '',
+	    'transport' => 'postMessage',
+) );
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'twitter_link_text', array(
+		'label'    => __( 'Twitter', 'geekhub' ),
+		'section'  => 'Social_link',
+		'settings' => 'twitter_link',
+) ) );
+	$wp_customize->add_setting( 'youtube_link' , array(
+	    'default'   => '',
+	    'transport' => 'postMessage',
+) );
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'youtube_link_text', array(
+		'label'    => __( 'Youtube', 'geekhub' ),
+		'section'  => 'Social_link',
+		'settings' => 'youtube_link',
+) ) );
+	$wp_customize->add_setting( 'vimeo_link' , array(
+	    'default'   => '',
+	    'transport' => 'postMessage',
+) );
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'vimeo_link_text', array(
+		'label'    => __( 'Vimeo', 'geekhub' ),
+		'section'  => 'Social_link',
+		'settings' => 'vimeo_link',
+) ) );
 
 }
 add_action( 'customize_register', 'geekhub_customize_register' );

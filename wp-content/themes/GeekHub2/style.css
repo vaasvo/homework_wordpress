@@ -1,5 +1,5 @@
 /*
-Theme Name: GeekHub 2
+Theme Name: GeekHub
 Theme URI: http://www.vaas.nm.ru
 Description: Test theme
 Version: 1.0
@@ -270,4 +270,50 @@ h5{
 #footer li.current_page_item a, #footer a:hover{
 	color: #F85B4E;
 	text-decoration: none;
+}
+
+/*-------------------------------------HOME---------------------------------------*/
+.home #content{
+	padding-top: 36px;
+}
+
+.home h4{
+	font: 28px/21px 'Trebuchet MS', sans-serif;
+	color: #E92777;
+}
+
+
+/*-------------------------------------PAGE---------------------------------------*/
+.page #content li{
+	width: 100%;
+}
+.page #content h3{
+	font-size: 50px;
+	text-transform: none;
+	text-align: left;
+	letter-spacing: 2px;
+}
+.page #content h4{
+	float: left;
+	width: 185px;
+	padding: 12px 20px 0;
+	font: 28px 'Trebuchet MS', sans-serif;
+	color: #E92777;
+	text-align: right;
+	line-height: 28px;
+}
+.page #content h4 span{
+	display: block;
+	padding-top: 5px;
+	font: 13px Arial, sans-serif;
+	font-weight: normal;
+	color: #F2753D;
+}
+.page #content img{
+	float: left;
+	width: 120px;
+	height: 120px;
+}
+.page #content p{
+	line-height: 20px;
 }

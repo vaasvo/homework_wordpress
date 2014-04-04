@@ -1,22 +1,21 @@
 <?php get_header(); ?>
-		<div id="content">
+	<div id="content">
+		<?php the_title('<h3>', '</h3>'); ?>
+		<ul>
+			<?php query_posts(array('orderby' => 'ID', 'order'=> 'ASC')); ?>
+			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-			<ul>
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+			<li>
+				<h4><span></span></h4>
+				<?php the_post_thumbnail(); ?>
+				<?php the_content();?>
+			</li>
 
-	<li>
-<?php the_post_thumbnail(); ?>
-		<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-<?php the_content();?>
-	</li>
-
-
-<?php endwhile; ?>
-<!-- post navigation -->
-<?php else: ?>
-<!-- no posts found -->
-<?php endif; ?>
+			<?php endwhile; ?>
+			<?php else: ?>
+			<!-- no posts found -->
+			<?php endif; wp_reset_query(); ?>
 			</ul>
-		</div>
+	</div>
 
 <?php get_footer(); ?>

@@ -5,26 +5,37 @@
 		<title><?php bloginfo('name'); wp_title(); ?></title>
 <?php wp_head(); ?>	
 	</head>
-	<body>
+	<body <?php body_class(); ?>>
 		<div id="header-wrap">
 			<div id="header">
 				<h1><a href="<?php echo home_url(); ?>">
 					<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="GeekHub" />GeekHub</a></h1>
-<?php wp_nav_menu(array(
-						'theme_location' => 'navigation', 
-						'container' => false,
-						'menu_class' => false,
-						'menu_id' => 'nav'
-						)); ?>
-				
+				<?php wp_nav_menu(array(
+					'theme_location' => 'navigation', 
+					'container' => false,
+					'menu_class' => false,
+					'menu_id' => 'nav'
+				)); ?>
+
 				<ul id="social-nav">
-					<li class="fb"><a href="#">Facebook</a></li>
-					<li class="vk"><a href="#">Vkontakte</a></li>
-					<li class="tw"><a href="#">Twitter</a></li>
-					<li class="yt"><a href="#">Youtube</a></li>
-					<li class="vim"><a href="#">Vimeo</a></li>
+					<?php if(get_theme_mod('facebook_link') ) { ?>
+					<li class="fb"><a href="https://www.facebook.com/<?php echo get_theme_mod('facebook_link'); ?>">Facebook</a></li>
+					<?php } ?>
+					<?php if(get_theme_mod('vkontakte_link') ) { ?>
+					<li class="vk"><a href="https://www.vk.com/<?php echo get_theme_mod('vkontakte_link'); ?>">Vkontakte</a></li>
+					<?php } ?>
+					<?php if(get_theme_mod('twitter_link') ) { ?>
+					<li class="tw"><a href="https://www.twitter.com/<?php echo get_theme_mod('twitter_link'); ?>">Twitter</a></li>
+					<?php } ?>
+					<?php if(get_theme_mod('youtube_link') ) { ?>
+					<li class="yt"><a href="https://www.youtube.com/<?php echo get_theme_mod('youtube_link'); ?>">Youtube</a></li>
+					<?php } ?>
+					<?php if(get_theme_mod('vimeo_link') ) { ?>
+					<li class="vim"><a href="https://www.vimeo.com/<?php echo get_theme_mod('vimeo_link'); ?>">Vimeo</a></li>
+					<?php } ?>
 				</ul>
-				<h2>Реєстрація на другий сезон відкрита!</h2>
+
+				<h2><?php bloginfo( 'description' ); ?></h2>
 				<a class="reg" href="#">Зареєструватися</a>
 			</div>
 		</div>
