@@ -1,5 +1,7 @@
 <?php
 
+load_theme_textdomain('geekhub', get_template_directory() . '/languages');
+
 function load_style_script(){
 	wp_enqueue_style('style', get_template_directory_uri() . '/style.css');
 }
@@ -71,6 +73,7 @@ function geekhub_customize_register( $wp_customize ) {
 	    'priority' => 30,
 ) );
 	$wp_customize->add_setting( 'header_image' , array(
+	    'default' => get_template_directory_uri() . '/img/geekhub.png',
 	    'transport'     => 'refresh',
 ) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'link_header_image', array(
